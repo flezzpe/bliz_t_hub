@@ -2281,7 +2281,8 @@ function RayfieldLibrary:CreateWindow(Settings)
 							SaveConfiguration()
 						end
 					end
-				elseif KeybindSettings.CurrentKeybind ~= nil and (input.KeyCode == Enum.KeyCode[KeybindSettings.CurrentKeybind] and not processed) then -- Test
+				elseif Enum.KeyCode[KeybindSettings.CurrentKeybind] and KeybindSettings.CurrentKeybind ~= nil and (input.KeyCode == Enum.KeyCode[KeybindSettings.CurrentKeybind] and not processed) then -- Test
+					warn(typeof(KeybindSettings.CurrentKeybind))
 					local Held = true
 					local Connection
 					Connection = input.Changed:Connect(function(prop)
