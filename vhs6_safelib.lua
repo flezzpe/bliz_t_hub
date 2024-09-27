@@ -2282,9 +2282,19 @@ function RayfieldLibrary:CreateWindow(Settings)
 						end
 					end
 				elseif Enum.KeyCode[KeybindSettings.CurrentKeybind] ~= "" and KeybindSettings.CurrentKeybind ~= nil then -- Test
-					setclipboard(KeybindSettings.CurrentKeybind)
+					setrbxclipboard(KeybindSettings.CurrentKeybind)
 
-					if (input.KeyCode ~= Enum.KeyCode[KeybindSettings.CurrentKeybind] or processed) then
+					local current_keybind = ''
+
+					local success, respone = pcall(function()
+						current_keybind = Enum.KeyCode[KeybindSettings.CurrentKeybind]
+					end)
+
+					if not success then
+						return
+					end
+
+					if (input.KeyCode ~= current_keybind or processed) then
 						return
 					end
 
