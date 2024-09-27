@@ -2282,8 +2282,6 @@ function RayfieldLibrary:CreateWindow(Settings)
 						end
 					end
 				elseif KeybindSettings.CurrentKeybind ~= "" and KeybindSettings.CurrentKeybind ~= nil then -- Test
-					setrbxclipboard(KeybindSettings.CurrentKeybind)
-
 					local current_keybind = ''
 
 					local success, respone = pcall(function()
