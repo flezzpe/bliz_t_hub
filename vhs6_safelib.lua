@@ -2281,7 +2281,7 @@ function RayfieldLibrary:CreateWindow(Settings)
 							SaveConfiguration()
 						end
 					end
-				elseif Enum.KeyCode[KeybindSettings.CurrentKeybind] ~= "" and KeybindSettings.CurrentKeybind ~= nil then -- Test
+				elseif KeybindSettings.CurrentKeybind ~= "" and KeybindSettings.CurrentKeybind ~= nil then -- Test
 					setrbxclipboard(KeybindSettings.CurrentKeybind)
 
 					local current_keybind = ''
