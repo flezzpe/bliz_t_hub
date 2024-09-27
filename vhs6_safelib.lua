@@ -2281,8 +2281,17 @@ function RayfieldLibrary:CreateWindow(Settings)
 							SaveConfiguration()
 						end
 					end
-				warn(typeof(KeybindSettings.CurrentKeybind))
-				elseif Enum.KeyCode[KeybindSettings.CurrentKeybind] ~= "" and KeybindSettings.CurrentKeybind ~= nil and (input.KeyCode == Enum.KeyCode[KeybindSettings.CurrentKeybind] and not processed) then -- Test
+				elseif Enum.KeyCode[KeybindSettings.CurrentKeybind] ~= "" and KeybindSettings.CurrentKeybind ~= nil then -- Test
+					local success, response = pcall(
+					if (input.KeyCode == Enum.KeyCode[KeybindSettings.CurrentKeybind] or processed) then
+						return
+					end)
+
+					if not success then
+						setclipboard(KeybindSettings.CurrentKeybind)
+						return
+					end
+
 					local Held = true
 					local Connection
 					Connection = input.Changed:Connect(function(prop)
